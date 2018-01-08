@@ -1,0 +1,63 @@
+{
+  "header": {
+    "navbar": {
+      "profile": "个人中心",
+      "reset_password": "修改密码",
+      "login_out": "注销"
+    }
+  },
+  "aside": {
+    "nav": {
+      "home": "首页",
+      "sales": {
+        "name": "销售管理",
+        "sales_order": "订单管理",
+        "return_order": "售后单",
+        "express": "物流设置",
+        "pay": "支付设置"
+      },
+      "member": {
+        "name": "会员管理",
+        "member_type": "级别设置",
+        "member_list": "会员信息"
+      },
+      "goods": {
+        "name": "商品管理",
+        "goods_list": "基础资料",
+        "goods_attr": "规格设置",
+        "online_list": "在线商品",
+        "promote_list": "促销管理"
+      },
+      "basics": {
+        "name": "基础设置",
+        "brand": "品牌管理",
+        "category": "类目管理",
+        "catalog": "目录设置"
+      },
+      "warehouse": {
+        "name": "库存管理",
+        "stock_list": "库存列表"
+      },
+      "configuration": {
+        "name": "统一配置",
+        "user": "用户管理",
+        "role": "角色管理"
+      },
+      "monitor": {
+        "name": "监控管理",
+        "message_queue": "MQ监控",
+        "redis": "Redis监控",
+        "schedule": "调度监控"
+      },
+      "system_setting": "系统设置"
+    }
+  },
+  "settings": {
+    "preferences": {
+      "name": "偏好设置",
+      "fixed_header": "固定顶部",
+      "fixed_aside": "固定左侧",
+      "folded_aside": "折叠菜单"
+    }
+  }
+}

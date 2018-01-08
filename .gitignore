@@ -1,0 +1,9 @@
+/requires
+/src/test
+/src/.idea
+/node_modules
+/.sass-cache
+*.zip
+*.rar
+/dist
+.idea

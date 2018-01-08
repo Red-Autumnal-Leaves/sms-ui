@@ -1,0 +1,124 @@
+<style type="text/css">
+    td img {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+<div class="wrapper-md">
+    <div class="panel panel-default">
+        <!-- heder -->
+        <div class="panel-heading">
+            <div class="row search-row" >
+                <div class="col-lg-4">
+                    <div class="form-group">
+                        <label  class="col-sm-3 control-label" style="margin-top: 5px;">关&nbsp;键&nbsp;字:</label>
+                        <div class="col-sm-9">
+                            <input type="text" ng-model="query.name" class="form-control" placeholder="输入关键字查询" style="height: 28px;">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <button class="btn btn-default btn-icon" ng-click="search();"><i class="fa fa-search"></i>查&nbsp;询</button>
+                    <button class="btn btn-default btn-icon" ng-click="clearQuery();"><i class="fa fa-twitter"></i>清&nbsp;空</button>
+                </div>
+            </div>
+            <div class="row tools-row">
+                <div class="col-lg-4 "></div>
+                <div class="col-lg-8 text-right">
+                    <button ng-click="showCreateModal('md')" title="创建" class="btn btn-sm btn-success"><em class="fa fa-pencil"></em></button>
+                </div>
+            </div>
+        </div>
+        <!-- 内容-->
+        <div class="table-responsive">
+            <table id="table-ext-1" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th check-all="check-all" select-items="selectItems">
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" />
+                                <span class="fa fa-check"></span>
+                            </label>
+                        </div>
+                    </th>
+                    <th>编号</th>
+                    <th>名称</th>
+                    <th>LOGO</th>
+                    <th>基础类目</th>
+                    <th>是否启用</th>
+                    <th>创建时间</th>
+                    <th>最后更新时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in tableData">
+                    <td >
+                        <div class="checkbox c-checkbox">
+                            <label>
+                                <input type="checkbox" ng-model='selectItems[$index]' ng-true-value='{{item.brandId}}'  ng-false-value="-1" value="{{item.brandId}}" name="brandId"/>
+                                <span class="fa fa-check"></span>
+                            </label>
+                        </div>
+                    </td>
+                    <td>{{item.brandId}}</td>
+                    <td>{{item.name}}</td>
+                    <td><img ng-src="{{item.logoUrl}}" /> </td>
+                    <td>{{item.categoryName}}</td>
+                    <td>
+                        <label class="i-switch m-t-xs m-r" >
+                            <input type="checkbox" ng-if="item.isEnable" ng-click="changeEnable(item.brandId);"  checked="checked" />
+                            <input type="checkbox" ng-if="!item.isEnable" ng-click="changeEnable(item.brandId);"  /><i></i>
+                        </label>
+                    </td>
+                    <td>{{item.createTime}}</td>
+                    <td>{{item.lastUpdateTime}}</td>
+                    <td>
+                        <a ng-click="showEditModal(item.brandId,'md')" title="编辑"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
+                        <a ng-click="delete(item.brandId,item.name)" title="删除"><i class="fa fa-times text-danger text"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--底部-->
+        <div class="panel-footer">
+            <table-pagination page="pagination" go-page="goPage(pageNow)" select-page-size="selectPageSize(pageSize)"></table-pagination>
+        </div>
+    </div>
+</div>
+<script type="text/ng-template" id="CreateOrUpdateBrandModal.html">
+    <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" ng-click="cancel()" class="close">×</button>
+        <h4 id="CreateOrUpdateBrandModal" class="modal-title">{{createOrUpdateTitle }}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row search-row">
+            <div style="text-align: center">
+                <img ng-src="{{brand.logoUrl}}" height="150" width="150"  style="cursor: pointer"/>
+            </div>
+        </div>
+        <div class="row search-row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">基础类目:</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="brand.categoryName" disabled class="form-control" placeholder="基础类目">
+                </div>
+            </div>
+        </div>
+
+        <div class="row search-row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">品牌名称:</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="brand.name" class="form-control" placeholder="品牌名称">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="ok()" class="btn btn-primary">保存</button>
+        <button ng-click="cancel()" class="btn btn-warning">取消</button>
+    </div>
+</script>

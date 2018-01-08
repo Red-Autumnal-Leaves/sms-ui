@@ -1,0 +1,94 @@
+<style type="text/css">
+    .well, pre {
+        background: none;
+    }
+
+</style>
+
+<div class="wrapper-md">
+    <div class="panel panel-default" style="height: 100%;overflow:hidden;">
+        <!-- heder -->
+        <div class="panel-heading">
+            目录设置
+        </div>
+        <!-- 内容-->
+
+    <div class="col-sm-12 col-lg-12" style="padding: 0 0 10px 0;">
+        <div class="well wd-wide">
+            <div class="head-menu" style="padding: 5px 15px 10px 0px;margin-bottom: 15px;border-bottom: 1px solid #e6e9ed;">
+                <a  title="新增" ng-click="showModal('create','md')"><i class="fa fa-pencil-square-o text-success text" style="margin-right: 20px;">&nbsp;新增</i></a>
+                <a  title="编辑" ng-click="showModal('update','md')"><i class="fa fa-pencil text-info text" style="margin-right: 20px;">&nbsp;编辑</i></a>
+                <a  title="删除" ng-click="tree.delete()"><i class="fa fa-times text-danger text">&nbsp;删除</i></a>
+            </div>
+            <span ng-if="tree.data == null">加载中...</span>
+            <abn-tree ng-if="tree.data" tree-data="tree.data" on-select="tree.selectNode(branch)" expand-level="2" ></abn-tree>
+        </div>
+    </div>
+<!-- <div class="col-sm-8 col-lg-9" style="padding: 0 100px;">
+     <div class="panel-body">
+         <div class="row">
+             <div style="text-align: center">
+                 <img src="{{tree.slectNode.image}}" height="150" width="150" />
+             </div>
+             <div class="form-group">
+                 <label>所选父级:</label>
+                 <input type="text" ng-model="tree.slectNode.parent.name" disabled class="form-control" placeholder="所选父级名称">
+             </div>
+             <div class="form-group">
+                 <label>名称:</label>
+                 <input type="text"  ng-model="tree.slectNode.name" class="form-control" placeholder="请输入目录名称">
+             </div>
+             <div class="form-group">
+                 <label>排序级别：</label>
+                 <input type="number"  ng-model="tree.slectNode.levl" class="form-control" placeholder="排序级别">
+             </div>
+             <button id="Button1" class="btn btn-primary" style="float:right;">保&nbsp;存</button>
+         </div>
+     </div>
+ </div>-->
+    </div>
+</div>
+
+<script type="text/ng-template" id="CreateOrUpdateCatalogModal.html">
+    <div class="modal-header">
+        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">×</button>
+        <h4 id="CreateOrUpdateCatalogModal" class="modal-title">{{title }}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row search-row">
+            <div style="text-align: center">
+                <img src="{{selectedNode.image}}" height="150" width="150" />
+            </div>
+        </div>
+
+        <div class="row search-row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">父级:</label>
+                <div class="col-sm-10">
+                    <input type="text" ng-model="selectedNode.parent.name" disabled class="form-control" placeholder="所选父级名称">
+                </div>
+            </div>
+        </div>
+
+        <div class="row search-row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">名称:</label>
+                <div class="col-sm-10">
+                    <input type="text"  ng-model="selectedNode.name" class="form-control" placeholder="请输入目录名称">
+                </div>
+            </div>
+        </div>
+        <div class="row search-row">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">级别：</label>
+                <div class="col-sm-10">
+                    <input type="number" ng-model="selectedNode.levl" class="form-control" placeholder="排序级别">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-click="ok()" class="btn btn-primary">保存</button>
+        <button ng-click="cancel()" class="btn btn-warning">取消</button>
+    </div>
+</script>
