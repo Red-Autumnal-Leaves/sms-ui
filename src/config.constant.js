@@ -7,7 +7,7 @@ app.constant("AppConfig", {
     },
 
 	//模式  dep = 发布模式 ,dev = 开发模式
-	active:'dev',
+	active:'dep',
 
 	//API接口地址
    // host:'localhost:8080/sms',

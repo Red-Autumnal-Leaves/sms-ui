@@ -55,6 +55,12 @@ angular.module("stock").controller("itemCtrl", ['$scope','$timeout','$modal','co
             search();
         }
 
+        //编辑详情
+        $scope.myGoods = true;
+        $scope.toggle = function() {
+            $scope.myGoods = !$scope.myGoods;
+        }
+
         /**
          * 执行初始化
          */

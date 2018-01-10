@@ -74,12 +74,18 @@
                         {{item.isVirtual ? '是' : "否"}}
                     </td>
                     <td>
-                        <a  title="编辑"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
+                        <a ng-click="toggle();" title="编辑"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
                     </td>
                 </tr>
                 </tbody>
             </table>
         </div>
+
+        <!--编辑商品详情-->
+        <div ng-include="'business/item/item/goods.html'" ng-hide="myGoods">
+        </div>
+        <div class="good_mark" ng-hide="myGoods">&nbsp;</div>
+
         <!--底部-->
         <div class="panel-footer">
             <table-pagination page="pagination" go-page="goPage(pageNow)" select-page-size="selectPageSize(pageSize)"></table-pagination>

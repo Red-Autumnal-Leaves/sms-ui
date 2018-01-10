@@ -190,7 +190,7 @@ angular.module('item', []).config(function($stateProvider) {
             controller: "itemCtrl",
             templateUrl: "business/item/item/item.html",
             resolve: new LoadModules(["app.item.list"])
-        });
+        })
 });
 
 /**
