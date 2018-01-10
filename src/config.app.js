@@ -33,7 +33,9 @@ var app = angular.module('app', [
 app.run([ '$rootScope', '$state', '$stateParams',function ($rootScope,   $state,   $stateParams) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        $rootScope.user = {};//用户信息
+        if(!$rootScope.user){
+            $rootScope.user = {};//用户信息
+        }
     }
 ]);
 
@@ -115,7 +117,7 @@ app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage',
     commonService.getToken().then(function(e){
         if(e.data.success){
             $rootScope.user = e.data.response;
-            $rootScope.user.token = e.data.response.token;//存储token信息
+            $localStorage.user = e.data.response;
         }
         else{
             $rootScope.$state.go('access.login',{reload: true});
@@ -129,6 +131,7 @@ app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage',
      */
     $scope.logout = function(){
         commonService.logout().then(function(){
+            $localStorage.user= {};
             $rootScope.$state.go("access.login");
         },function(){
             $rootScope.$state.go("access.login");
@@ -158,6 +161,33 @@ app.config(['$translateProvider', function($translateProvider){
     $translateProvider.useLocalStorage();
 
 }]);
+
+/**
+ * 解决跨域设置 将token设置到header
+ */
+app.config(['$httpProvider',function($httpProvider){
+    $httpProvider.interceptors.push(['$rootScope', '$q','$localStorage', function ($rootScope, $q,$localStorage) {
+        return {
+            request: function (config) {
+                config.headers = config.headers || {};
+                if($localStorage.user){
+                    config.headers.token = $localStorage.user.token;
+                }
+                return config;
+            },
+
+            response: function (response) {
+
+                return response || $q.when(response);
+            },
+
+            responseError: function (response) {
+
+                return $q.reject(response);
+            }
+        }
+    }])
+}])
 
 /**
  * jQuery 插件配置，自定义directives

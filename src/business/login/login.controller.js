@@ -1,12 +1,12 @@
-angular.module("login").controller("loginCtrl", ['$scope','$rootScope','commonService',
-    function($scope,$rootScope,commonService) {
+angular.module("login").controller("loginCtrl", ['$scope','$rootScope','$localStorage','commonService',
+    function($scope,$rootScope,$localStorage,commonService) {
         $scope.form = {};
         $scope.login = function(){
             commonService.login($scope.form).then(function(e){
                 if(e.data.success){
                     $rootScope.user = e.data.response;
-                    $rootScope.user.token = e.data.response.token;//存储token信息
                     $rootScope.$state.go('app.home');
+                    $localStorage.user = e.data.response;
                 }else{
                     $scope.msg = e.data.msg;
                     $scope.form = {};
@@ -16,4 +16,4 @@ angular.module("login").controller("loginCtrl", ['$scope','$rootScope','commonSe
                 $scope.form = {};
             });
         };
-}])
+    }])
