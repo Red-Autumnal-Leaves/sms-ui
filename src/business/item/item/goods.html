@@ -4,17 +4,86 @@
     <div class="gb_body">
         <ul class="gb_list">
             <li>
+                <div class="gb_left">商品编码:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
                 <div class="gb_left">商品名称:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">短标题:</div>
                 <div class="gb_right"><input type="text"/></div>
             </li>
             <li>
                 <div class="gb_left">商品图片:</div>
                 <div class="gb_right"><input type="button" value="上传图片"/></div>
             </li>
+            <li>
+                <div class="gb_left">供应商:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">基础分类:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">目录:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">品牌:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">基础定价:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">单位:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">关键词:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">是否虚拟商品:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
+            <li>
+                <div class="gb_left">商家备注:</div>
+                <div class="gb_right"><input type="text"/></div>
+            </li>
         </ul>
-        <div class="gb_btn">
-            <button type="button" class="btn btn-square btn-info">保存</button>
-            <button type="button" class="btn btn-square btn-info">取消</button>
+
+        <div class="gb_table">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建者</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">创建时间</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最后修改者</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最后修改时间</font></font></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr class="success">
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Mr.Zhang</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2017.12.30 15:33</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">King.Nie</font></font></td>
+                        <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2018.1.11 14:31</font></font></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+    </div>
+
+    <!--保存按钮-->
+    <div class="gb_btn">
+        <button type="button" class="btn btn-square btn-info">保存</button>
+        <button type="button" class="btn btn-square btn-info" ng-click="toggle();">取消</button>
     </div>
 </div>
