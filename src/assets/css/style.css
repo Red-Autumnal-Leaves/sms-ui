@@ -1,5 +1,5 @@
 /*商品详情编辑*/
-.good_mark {
+.good_mark{
     position: fixed;
     z-index: 10000;
     background-color: rgba(0,0,0,.5);
@@ -10,13 +10,8 @@
     top: 0;
 }
 
-<<<<<<< HEAD
-.goods_box {
-    width: 50vw;
-=======
 .goods_box{
     width: 60vw;
->>>>>>> d928b4499c22673e7cac913fc86288485bdf3b49
     background-color: #fff;
     position: fixed;
     left: 20vw;
@@ -31,8 +26,7 @@
     margin-top: .6rem;
     padding-bottom: .8rem;
 }
-
-.goods_tit {
+.goods_tit{
     display: block;
     text-align: center;
     font-size: .24rem;
@@ -46,16 +40,6 @@
     background-color: #ffffff;
     border-radius: .1rem .1rem 0 0;
 }
-<<<<<<< HEAD
-
-    .goods_tit i {
-        float: right;
-        font-size: 20px;
-        cursor: pointer;
-    }
-
-.goods_box .gb_list li {
-=======
 .goods_tit i{
     float: right;
     font-size: .24rem;
@@ -63,22 +47,18 @@
     margin-right: .2rem;
 }
 .goods_box .gb_list li{
->>>>>>> d928b4499c22673e7cac913fc86288485bdf3b49
     list-style: none;
     font-size: .14rem;
     margin-top: .2rem;
 }
-
-.gb_left {
+.gb_left{
     width: 20%;
     display: inline-block;
 }
-
-.gb_right {
+.gb_right{
     display: inline-block;
 }
-
-.gb_btn {
+.gb_btn{
     text-align: center;
     position: absolute;
     width: 100%;
@@ -89,18 +69,6 @@
     border-top: 1px solid #dddddd;
     border-radius: 0 0 .1rem .1rem;
 }
-<<<<<<< HEAD
-
-    .gb_btn button {
-        width: 60px;
-        margin-right: 40px;
-    }
-
-
-.breadcrumb-line .breadcrumb {
-    background-color: #ffffff;
-}
-=======
 .gb_btn button{
     width: .85rem;
     margin-right: .4rem;
@@ -110,4 +78,3 @@
     border-top: 2px solid #dddddd;
     margin-top: .3rem;
 }
->>>>>>> d928b4499c22673e7cac913fc86288485bdf3b49
