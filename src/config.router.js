@@ -95,6 +95,17 @@ angular.module('monitor', []).config(function($stateProvider) {
         });
 });
 
+//三级目录
+angular.module('tree', []).config(function($stateProvider) {
+    $stateProvider
+        .state('app.tree', {
+            url:"/tree",
+            controller:'treeCtrl',
+            templateUrl: "business/tree/tree.html",
+            resolve: new LoadModules(["app.tree"])
+        });
+});
+
 /**
  * 基础设置
  */
@@ -303,6 +314,13 @@ var _JS_REQUIRES = [
         files: [
             'business/stock/stock.service.js',
             'business/stock/stock.controller.js'
+        ]
+    },
+    {
+        name: 'app.tree',
+        files: [
+            'business/tree/tree.service.js',
+            'business/tree/tree.controller.js'
         ]
     }
 

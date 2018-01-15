@@ -27,7 +27,8 @@ var app = angular.module('app', [
         'stock',
         'member',
         'basics',
-        'table'
+        'table',
+        'tree'
 ]);
 //初始化
 app.run([ '$rootScope', '$state', '$stateParams',function ($rootScope,   $state,   $stateParams) {
@@ -242,7 +243,8 @@ app.constant('JQ_CONFIG', {
         footable:       [
                             'assets/js/jquery/footable/footable.all.min.js',
                             'assets/js/jquery/footable/footable.core.css'
-                        ],
+                        ]
+
 
 })
 .constant('MODULE_CONFIG', {

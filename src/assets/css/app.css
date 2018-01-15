@@ -3153,10 +3153,6 @@ a.text-black:hover {
 .wrapper {
   padding: 15px;
 }
-.wrapper-md {
-  padding: 5px;
-  overflow: hidden;
-}
 .wrapper-lg {
   padding: 30px;
 }
