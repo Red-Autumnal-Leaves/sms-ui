@@ -1,0 +1,23 @@
+{
+  "name": "sms-ui",
+  "version": "1.0.0",
+  "description": "商城后台管理系统",
+  "main": "src/index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Red-Autumnal-Leaves/sms-ui.git"
+  },
+  "author": "Red-Autumnal-Studio",
+  "license": "ISC",
+  "homepage": "https://github.com/Red-Autumnal-Leaves/sms-ui#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-csslint": "^2.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-uglify": "^3.3.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
