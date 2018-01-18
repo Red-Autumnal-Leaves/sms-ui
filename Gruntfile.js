@@ -5,59 +5,63 @@ module.exports = function(grunt){
 
         pkg: grunt.file.readJSON('package.json'),
 
-        //合并文件
+       /* jshint:{
+            options: {
+                curly: false,
+                undef: true,
+            },
+            files: {
+                src: ['src/!*.js', 'src/bussiness/!**!/!*.js']
+            },
+        },*/
+
+
+        //合并CSS 和 JS
         concat: {
             options:{
-                stripBanners:true, //合并时允许输出头部信息
+                stripBanners:true,
                 banner:'/*!<%= pkg.name %> - <%= pkg.version %>-'+'<%=grunt.template.today("yyyy-mm-dd") %> */'
             },
             cssConcat:{
-                src:['src/bussiness/css/style.css'],
-                dest:'src/css/concat/<%= pkg.name %> - <%= pkg.version %>.css' //dest 是目的地输出
+                src:['src/**/*.css'],
+                dest:'dest/css/app-<%= pkg.version %>.css'
             },
             jsConcat:{
-                src:'src/js/*.js',
-                dest:'src/js/concat/<%=pkg.name %> - <%= pkg.version %>.js'
+                src:'src/**/*.js',
+                dest:'dest/js/app-<%= pkg.version %>.js'
             }
         },
 
         //压缩css
         cssmin:{
             options:{
-                stripBanners:true, //合并时允许输出头部信息
+                stripBanners:true,
                 banner:'/*!<%= pkg.name %> - <%= pkg.version %>-'+'<%=grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build:{
-                src:'src/css/concat/<%=pkg.name %> - <%=pkg.version %>.css',//压缩是要压缩合并了的
-                dest:'dist/css/<%= pkg.name %> - <%= pkg.version %>.min.css' //dest 是目的地输出
-            }
-        },
-        //压缩js
-        uglify:{
-            options:{
-                stripBanners:true, //合并时允许输出头部信息
-                banner:'/*!<%= pkg.name %> - <%= pkg.version %>-'+'<%=grunt.template.today("yyyy-mm-dd") %> */\n'
-            },
-            build:{
-                src:'src/js/concat/<%=pkg.name %> - <%=pkg.version %>.js',//压缩是要压缩合并了的
-                dest:'dist/js/<%= pkg.name %> - <%= pkg.version %>.min.js' //dest 是目的地输出
+                src:'dest/css/app-<%= pkg.version %>.css',
+                dest:'dest/css/app-<%= pkg.version %>.min.css'
             }
         },
 
+        //压缩js
         jshint:{
             options:{
-                jshintrc:'.jshint'
+                stripBanners:true,
+                boss: false,
+                curly: false,		//循环或者条件语句必须使用花括号包围
+                undef: true,		//变量未定义
+                unused: false,		//变量未使用
+                eqeqeq: false,		//强制使用三等号
+                lastsemic: false,	//检查一行代码最后声明后面的分号是否遗漏
+                banner:'/*!<%= pkg.name %> - <%= pkg.version %>-'+'<%=grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            build:['Gruntfile.js','src/js/*js']
+            build:{
+                src:'dest/js/app-<%= pkg.version %>.js',
+                dest:'dest/js/app-<%= pkg.version %>.min.js'
+            }
         },
 
-        csslint:{
-            options:{
-                csslintrc:'.csslint'
-            },
-            build:['src/css/*.css']
-
-        },
         //watch自动化
         watch:{
             build:{
@@ -76,6 +80,8 @@ module.exports = function(grunt){
     grunt.loadNpmTasks('grunt-contrib-csslint');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
-    //告诉grunt当我们在终端输入grunt时需要做些什么
-    grunt.registerInitTask('default',['jshint','csslint','concat','cssmin','uglify','watch']);//先进行语法检查，如果没有问题，再合并，再压缩
+
+    grunt.registerInitTask('check',['jshint']);//进行语法检查
+
+    grunt.registerInitTask('build',['concat','cssmin','jshint']);//css合并
 };
