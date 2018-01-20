@@ -1,9 +1,9 @@
-# KShop manage web ui.
+# RAL-SHOP
 
-KShop商城后台前端框架
+RAL-SHOP商城后台前端框架
 
 
-## 目录说明
+## 项目结构说明
 
 index.html 为web入口, 引用必要的js和css
 
@@ -25,7 +25,7 @@ business 为业务模块文件夹
 
 components 为页面组件文件夹
 
-## 新建一个模块文件夹结构和命名规范
+## 新模块文件夹结构以及命名规范
 
 为了团队更高效的合作, 开发者负责一个新模块, 创建新模块文件夹和文件名上有一定的规范要求. 示例如下:
 
@@ -39,7 +39,7 @@ applications.service.js 服务文件, 负责与后端的REST接口通信, 接收
 
 新模块必须要有以上3类文件. 模块的视图文件和控制器文件如有多个, 命名为applications-xxx.html application-xxx.controller.js
 
-## 新模块的路由
+## 模块路由
 
 项目框架使用UI-Router进行前端路由. 路由的配置定义在config.router.js. 下面的例子把applications.html定义在url:index.html#/app/demo/applications
 
@@ -68,35 +68,25 @@ $stateProvider.state('app.demo.applications', {
 });
 ```
 
-## 本地开发调试项目
+## 开发&调试
 
-依赖于Nginx,配置Nginx和config.constant.js：
+1. 安装nodejs环境, <a href="http://example.com" target="_blank">[下载地址]</a>
 
-config.constant.js
+2. 配置国内淘宝镜像, 命令行执行如下命令，可能时间会稍微有点长，需要一些耐心：
+``` 
+npm install -g cnpm --registry=https://registry.npm.taobao.org
 ```
-app.constant("AppConfig", {
-    HostUrl:'sm/v1/'
-});
+3. 进入项目根目录，下载相关依赖插件，命令如下：
+```
+cnpm install
 ```
 
-```
-server {
-        listen       80;
-        server_name  localhost;
-        root F:\GitLab\KShop\sms-ui;#本地项目路径
-        location /sm/v1 {
-             proxy_set_header Host $host;
-             proxy_set_header X-Real-IP $remote_addr;
-             proxy_set_header REMOTE-HOST $remote_addr;
-             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-             proxy_pass    http://localhost:8080/sm/v1/;#接口地址
-        }
-        error_page   500 502 503 504  /50x.html;
-        location = /50x.html {
-            root   html;
-        }
+4. 启动项目:
 
-    }
 ```
+cnpm run start
+```
+
+
 
 

@@ -20,15 +20,9 @@ var minimist = require('minimist');//用于获取命令行输入参数插件
 
 var del = require('del');//删除文件&目录插件
 
-var zip = require('gulp-zip');//zip压缩插件
-
-var ftp = require('gulp-ftp');//ftp插件
-
-var sequence = require('run-sequence');//任务串行插件
-
 var moment = require('moment');//操作时间的插件
 
-
+var webserver = require('gulp-webserver');//web server
 
 
 /***************************    全局常量     ***********************/
@@ -36,15 +30,21 @@ var global = {
     path: {
         input:{//配置需要打包的目录
             html:['src/**/*.html'],
-            js:['src/*.js','src/business/**/*.js'],
-            css:['src/**/*.css'],
-            image:['src/assets/img/*'],
+            css:['src/assets/css/**/*.css'],
+            configJs:['src/*.js'],
+            businessJs:['src/business/**/*.js'],
+            image:['src/assets/img/**/*'],
+            i18n:['src/assets/i18n/**/*'],
             fonts:['src/assets/fonts/*'],
-            copy:['src/**/*.*.less','src/assets/js/**/*','src/assets/lib/**/*']
+            lib:['src/assets/lib/**/*']
         },
         output:{//输出目录
             dist:'dist',
-            lib:'dist/assets/lib'
+            css:'dist/assets/css',
+            business:'dist/business',
+            lib:'dist/assets/lib',
+            image:'dist/assets/img',
+            i18n:'dist/assets/i18n'
         }
     }
 }
@@ -70,47 +70,60 @@ gulp.task('htmlmin', function () {
 
 
 //压缩JS
-gulp.task('jsmin', function (done) {
-    return gulp.src(global.path.input.js)
+gulp.task('configJsMin', function (done) {
+    return gulp.src(global.path.input.configJs)
         .pipe(annotate({single_quotes: true}))
         .pipe(uglify())
-        .pipe(concat('index.min.js'))
-        .pipe(gulp.dest(global.path.output.dist))
+        .pipe(gulp.dest(global.path.output.dist));
 });
+
+gulp.task('businessJsMin', function (done) {
+    return gulp.src(global.path.input.businessJs)
+        .pipe(annotate({single_quotes: true}))
+        .pipe(uglify())
+        .pipe(gulp.dest(global.path.output.business));
+});
+
+
+gulp.task('jsmin',['configJsMin','businessJsMin']);
 
 
 //压缩合并css
 gulp.task('cssmin', function () {
     return gulp.src(global.path.input.css)
-        .pipe(cssmin())
-        .pipe(concat('index.min.css'))
-        .pipe(gulp.dest(global.path.output.dist))
+        .pipe(cssmin({keepBreaks: true}))
+        .pipe(gulp.dest(global.path.output.css));
 });
 
-//复制
-gulp.task('copy', function (done) {
-    return gulp.src(global.path.input.copy)
-        .pipe(gulp.dest(global.path.output.lib))
+
+gulp.task('lib', function () {
+    return gulp.src(global.path.input.lib).pipe(gulp.dest(global.path.output.lib));
 });
 
-gulp.task('zip_new', function () {
-    var timeStamp = moment().format("YYYY-MM-D_HH-mm-ss_");
-    return gulp.src(config.input.zip)
-        .pipe(zip("dist_" + timeStamp + ".zip"))
-        .pipe(gulp.dest(config.output.dist));
+gulp.task('img', function () {
+    return gulp.src(global.path.input.image).pipe(gulp.dest(global.path.output.image));
 });
 
-gulp.task('ftp', function () {
-    gulp.src("dist_zip/*")
-        .pipe(ftp({
-            host: 'someHost',
-            port: 21,
-            //user: 'anonymous',
-            //pass:null,
-            remotePath: "somePath/"
+gulp.task('i18n', function () {
+    return gulp.src(global.path.input.i18n).pipe(gulp.dest(global.path.output.i18n));
+});
+
+
+gulp.task('copy',['lib','img','i18n']);
+
+
+gulp.task('start', function(){
+    return gulp.src(['src']).pipe(webserver({
+            port: 3688,
+            livereload: true,
+            open: true,
+            proxies: [
+                {
+                    source: '/sms/v1', target: 'http://47.96.7.95:8083/sms/v1'
+                }
+            ]
         }));
 });
 
-gulp.task('publish', function (callback) {
-    runSequence(['html', 'js','less', 'copy'],'zip_new',ftp,callback);
-});
+gulp.task('build',['htmlmin','cssmin','jsmin','copy']);
+
