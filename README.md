@@ -70,7 +70,7 @@ $stateProvider.state('app.demo.applications', {
 
 ## 开发&调试
 
-1. 安装nodejs环境, <a href="http://example.com" target="_blank">[下载地址]</a>
+1. 安装nodejs环境, <a href="https://nodejs.org/en/download/" target="_blank">[下载地址]</a>
 
 2. 配置国内淘宝镜像, 命令行执行如下命令，可能时间会稍微有点长，需要一些耐心：
 ``` 
