@@ -119,7 +119,7 @@ gulp.task('start', function(){
             open: true,
             proxies: [
                 {
-                    source: '/sms/v1', target: 'http://47.96.7.95:8083/sms/v1'
+                    source: '/sms/v1', target: 'http://47.96.7.95:8083/ral/sms/v1'
                 }
             ]
         }));
