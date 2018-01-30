@@ -176,11 +176,17 @@ angular.module('member', []).config(function($stateProvider) {
                 skip: true
             }
         })
-        .state('app.member.membertype', {//会员类型
-            url: "/membertype",
+        .state('app.member.list', {
+            url:"/list",
+            controller: "memberListCtrl",
+            templateUrl: "business/member/list/member-list.html",
+            resolve: new LoadModules(["app.member.list"])
+        })
+        .state('app.member.type', {//会员类型
+            url: "/type",
             controller: "memberTypeCtrl",
-            templateUrl: "business/member/membertype/member-type.html",
-            resolve: new LoadModules(["app.member.membertype"])
+            templateUrl: "business/member/type/member-type.html",
+            resolve: new LoadModules(["app.member.type"])
         });
 });
 
@@ -275,10 +281,17 @@ var _JS_REQUIRES = [
         ]
     },
     {
-        name: 'app.member.membertype',
+        name: 'app.member.list',
         files: [
             'business/member/member.service.js',
-            'business/member/membertype/member-type.controller.js'
+            'business/member/list/member-list.controller.js'
+        ]
+    },
+    {
+        name: 'app.member.type',
+        files: [
+            'business/member/member.service.js',
+            'business/member/type/member-type.controller.js'
         ]
     },
     {

@@ -32,6 +32,15 @@ angular.module('member').factory('memberService', ['$http', '$filter',  'commonS
                 };
                 return $http(req);
             }
+        },
+        member:{
+            query:function (data) {
+                var req = {
+                    method: "GET",
+                    url: commonService.getServerAuthUrl("member/query",data)
+                };
+                return $http(req);
+            }
         }
     };
 }]);

@@ -172,7 +172,7 @@ app.config(['$httpProvider',function($httpProvider){
             request: function (config) {
                 config.headers = config.headers || {};
                 if($localStorage.user){
-                    config.headers.token = $localStorage.user.token;
+                   // config.headers.token = $localStorage.user.token;
                 }
                 return config;
             },

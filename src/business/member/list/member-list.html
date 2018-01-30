@@ -1,0 +1,61 @@
+<style>
+    .form-control .select2-choice {
+        line-height: 28px;
+        height: 28px;
+    }
+</style>
+<div class="wrapper-md">
+    <div class="breadcrumb-line">
+        <a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+        <ul class="breadcrumb">
+            <li><a href="index.html"><i class="fa fa-home position-left"></i> 首页</a></li>
+            <li><a href="#">会员管理</a></li>
+            <li class="active">会员信息</li>
+        </ul>
+    </div>
+    <div class="panel panel-default">
+        <!-- heder -->
+        <div class="panel-heading">
+            会员列表
+        </div>
+        <!-- 内容-->
+        <div class="table-responsive">
+            <table id="table-ext-1" class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>用户名</th>
+                        <th>电话</th>
+                        <th>级别</th>
+                        <th>生日</th>
+                        <th>邮箱</th>
+                        <th>积分</th>
+                        <th>状态</th>
+                        <th>注册时间</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in tableData">
+                        <td>{{item.username}}</td>
+                        <td>{{item.phone}}</td>
+                        <td>{{item.sex}}</td>
+                        <td>{{item.birth}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.integral}}</td>
+                        <td>{{item.status}}</td>
+                        <td>{{item.createTime}}</td>
+                        <td>
+                            <a ng-click="showEditModal(item.typeId,'md')" title="禁用"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--底部-->
+        <div class="panel-footer">
+            <table-pagination page="pagination" go-page="goPage(pageNow)" select-page-size="selectPageSize(pageSize)"></table-pagination>
+        </div>
+    </div>
+</div>
+
