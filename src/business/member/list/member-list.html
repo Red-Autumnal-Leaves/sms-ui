@@ -3,6 +3,14 @@
         line-height: 28px;
         height: 28px;
     }
+
+    TD a {
+        color: #00b3ee;
+    }
+    td img {
+        width: 20px;
+        height: 20px;
+    }
 </style>
 <div class="wrapper-md">
     <div class="breadcrumb-line">
@@ -36,13 +44,18 @@
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in tableData">
-                        <td>{{item.username}}</td>
+                        <td>
+                            <img ng-if="item.headerUrl" ng-src="{{item.headerUrl}}" />&nbsp;
+                            <a >{{item.username}}</a>
+                        </td>
                         <td>{{item.phone}}</td>
-                        <td>{{item.sex}}</td>
+                        <td>{{item.memberTypeName}}</td>
                         <td>{{item.birth}}</td>
                         <td>{{item.email}}</td>
                         <td>{{item.integral}}</td>
-                        <td>{{item.status}}</td>
+                        <td>
+                            <span ng-bind-html="item.status|status_member_text" class="label label-{{item.status|status_member_color}}"></span>
+                        </td>
                         <td>{{item.createTime}}</td>
                         <td>
                             <a ng-click="showEditModal(item.typeId,'md')" title="禁用"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>

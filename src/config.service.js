@@ -293,29 +293,32 @@ app.filter("status_joblog_text",function($sce){
     };
 });
 
-/********   商品相关filter   ************/
-app.filter("item_is_on_sales_color",function(){
+
+app.filter("status_member_color",function(){
     return function(input){
-        return input ? "success" : "default";
-    };
-});
-app.filter("item_is_on_sales_info",function($sce){
-    return function(input){
-        if(input){
-            return $sce.trustAsHtml('<i class="fa fa-fw m-r-xs text-success fa-check"></i>');
-        }else{
-            return $sce.trustAsHtml('<i class="fa fa-fw m-r-xs text-default fa-info-circle"></i>');
+        switch(input){
+            case 10:
+                return "success";
+            case 99:
+                return "danger";
+            default:
+                return "default";
         }
     };
 });
-app.filter("item_name_text",function($sce){
+app.filter("status_member_text",function($sce){
     return function(input){
-        if(input.length > 20 ){
-            return input.substr(0,19) + '...';
+        switch(input){
+            case 10:
+                return $sce.trustAsHtml("活跃中");
+            case 99:
+                return $sce.trustAsHtml("已禁用");
+            default:
+                return $sce.trustAsHtml("未知");
         }
-        return input ;
     };
 });
+
 
 /**
  * 分页按钮计算
