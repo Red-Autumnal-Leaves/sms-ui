@@ -139,6 +139,8 @@ app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage',
         });
     };
 
+
+
 }])
 
 
