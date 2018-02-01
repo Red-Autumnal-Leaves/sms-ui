@@ -1,0 +1,41 @@
+/* 会员管理 - 会员信息 */
+.table img{
+    width: 20px;
+    height: 20px;
+}
+.table a{
+    color: #00b3ee;
+}
+.table-cont {
+    max-height: 245px;
+    overflow: auto;
+    margin: 20px 10px;
+}
+
+.table-cont thead {
+    background-color: #f7f6f6;
+}
+
+/* 更改滚动条样式 Start */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:horizontal {
+    border-radius: 6px;
+    background: #eaeff0;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-track, ::-webkit-scrollbar-track-piece {
+    background: -webkit-gradient(linear,left);
+}
+
+::-webkit-scrollbar-track-piece {
+    background: #FFF;
+}
+/* 更改滚动条样式 End */
