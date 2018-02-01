@@ -12,14 +12,14 @@ angular.module('member').factory('memberService', ['$http', '$filter',  'commonS
             queryById:function (id) {
                 var req = {
                     method: "GET",
-                    url: commonService.getServerAuthUrl("memberType/" + id)
+                    url: commonService.getServerAuthUrl("memberType/detail/" + id)
                 };
                 return $http(req);
             },
             update:function (id,data) {
                 var req = {
                     method: "PUT",
-                    url: commonService.getServerAuthUrl("memberType/" + id,data),
+                    url: commonService.getServerAuthUrl("memberType/update/" + id,data),
                     data:data
                 };
                 return $http(req);
@@ -27,7 +27,7 @@ angular.module('member').factory('memberService', ['$http', '$filter',  'commonS
             add:function (data) {
                 var req = {
                     method: "POST",
-                    url: commonService.getServerAuthUrl("memberType/add",data),
+                    url: commonService.getServerAuthUrl("memberType/save",data),
                     data:data
                 };
                 return $http(req);

@@ -290,7 +290,6 @@ function checkAll () {
 function initScorllTable(scope, element, attrs){
     var height = $(document).height();
     var fix = attrs.fix || 30;
-    console.log('fix:' + fix);
     $(element).css('height',  height * fix / 100);
     $(element).on('scroll',function(e){
         var scrollTop = this.scrollTop;

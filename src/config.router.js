@@ -165,7 +165,7 @@ angular.module('sales', []).config(function($stateProvider) {
 });
 
 /**
- * 销售管理
+ * 会员
  */
 angular.module('member', []).config(function($stateProvider) {
     $stateProvider
