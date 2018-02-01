@@ -339,12 +339,6 @@ var _JS_REQUIRES = [
 
 ];
 
-var _APPEND_JS_REQUIRES = [
-    {
-        name:'全局TABLE JS',
-        file:'config.table.js'
-    },
-]
 
 
 
@@ -352,11 +346,6 @@ var _APPEND_JS_REQUIRES = [
 function initJsRequires(){
     var timestamp =  new Date().getTime();
     for(var i = 0; i < _JS_REQUIRES.length ; i++){
-        if(_APPEND_JS_REQUIRES){
-            for(var index in _APPEND_JS_REQUIRES){
-                _JS_REQUIRES[i].files.push(_APPEND_JS_REQUIRES[index].file );
-            }
-        }
         for(var j = 0 ; j < _JS_REQUIRES[i].files.length; j ++){
             _JS_REQUIRES[i].files[j] += "?v=" + timestamp;
         }
