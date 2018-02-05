@@ -1,27 +1,107 @@
 <div class="wrapper-md">
     <div class="row">
-        <div class="col-lg-3 col-sm-6 col-lg-push-3 col-sm-push-6">
-            <div class="well wd-wide">
-                <span ng-if="tree.data == null">loading...</span>
-                <abn-tree ng-if="tree.data" tree-data="tree.data" expand-level="2" ></abn-tree>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6 col-lg-pull-3 col-sm-pull-6">
-            <button ng-click="tree.try_changing_the_tree_data()" class="btn btn-block btn-default btn-sm">Toggle Tree Data</button>
-            <button ng-click="tree.try_async_load()" class="btn btn-block btn-default btn-sm">Tree Data Asynchronously (Json)</button>
-            <hr/>
-            <h5>Tree Control API:</h5>
-            <br/>
-            <div class="btn-group btn-group-justified mb"><a ng-click="tree.my_tree.select_first_branch()" class="btn btn-default btn-sm mb">First Branch</a><a ng-click="tree.try_adding_a_branch()" class="btn btn-default btn-sm">Add Branch</a>
-            </div>
-            <div class="btn-group btn-group-justified mb"><a ng-click="tree.my_tree.select_next_sibling()" class="btn btn-default btn-sm">Next Sibling</a><a ng-click="tree.my_tree.select_prev_sibling()" class="btn btn-default btn-sm">Prev Sibling</a>
-            </div>
-            <div class="btn-group btn-group-justified mb"><a ng-click="tree.my_tree.select_next_branch()" class="btn btn-default btn-sm">Next Branch</a><a ng-click="tree.my_tree.select_prev_branch()" class="btn btn-default btn-sm">Prev Branch</a>
-            </div>
-            <div class="btn-group btn-group-justified mb"><a ng-click="tree.my_tree.expand_branch()" class="btn btn-default btn-sm">Expand</a><a ng-click="tree.my_tree.select_parent_branch()" class="btn btn-default btn-sm mb">Parent</a>
-            </div>
-            <div class="btn-group btn-group-justified mb"><a ng-click="tree.my_tree.expand_all()" class="btn btn-default btn-sm">Expand All</a><a ng-click="tree.my_tree.collapse_all()" class="btn btn-default btn-sm">Collapse All</a>
+        <div class="col-sm-6">
+            <div class="widget-box" style="padding-left:20px;">
+                <div class="widget-header header-color-blue2">
+                    <h4 class="lighter smaller">Choose Categories</h4>
+                </div>
+                <div class="widget-body">
+                    <div class="widget-main padding-8">
+                        <div id="tree1" class="tree tree-selectable">
+                            <div class="tree-folder" style="display:none;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name"></div>
+                                </div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;"></div>
+                            </div>
+                            <div class="tree-item" style="display:none;">
+                                <i class="fa fa-remove"></i>
+                                <div class="tree-item-name"></div>
+                            </div>
+                            <div class="tree-folder" style="display: block;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name">For Sale</div></div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;">
+                                    <div class="tree-loading">
+                                        <i class="icon-refresh icon-spin blue"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-folder" style="display: block;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name">Vehicles</div></div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;">
+                                    <div class="tree-loading">
+                                        <i class="icon-refresh icon-spin blue"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-folder" style="display: block;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name">Rentals</div></div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;">
+                                    <div class="tree-loading">
+                                        <i class="icon-refresh icon-spin blue"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-folder" style="display: block;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name">Real Estate</div></div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;">
+                                    <div class="tree-loading">
+                                        <i class="icon-refresh icon-spin blue"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-folder" style="display: block;">
+                                <div class="tree-folder-header">
+                                    <i class="icon-plus"></i>
+                                    <div class="tree-folder-name">Pets</div></div>
+                                <div class="tree-folder-content"></div>
+                                <div class="tree-loader" style="display: none;">
+                                    <div class="tree-loading">
+                                        <i class="icon-refresh icon-spin blue"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tree-item" style="display: block;">
+                                <i class="fa fa-remove"></i>
+                                <div class="tree-item-name">Tickets</div></div>
+                            <div class="tree-item" style="display: block;">
+                                <i class="fa fa-remove"></i>
+                                <div class="tree-item-name">Services</div></div>
+                            <div class="tree-item" style="display: block;">
+                                <i class="fa fa-remove"></i>
+                                <div class="tree-item-name">Personals</div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    jQuery(function($){
+        $('#tree1').ace_tree({
+            dataSource: treeDataSource ,
+            multiSelect:true,
+            loadingHTML:'<div class="tree-loading"><i class="icon-refresh icon-spin blue"></i></div>',
+            'open-icon' : 'icon-minus',
+            'close-icon' : 'icon-plus',
+            'selectable' : true,
+            'selected-icon' : 'icon-ok',
+            'unselected-icon' : 'fa fa-remove'
+        });
+    });
+</script>

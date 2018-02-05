@@ -39,3 +39,7 @@
     background: #FFF;
 }
 /* 更改滚动条样式 End */
+
+.panel-heading .head-menu{
+    padding: 5px 15px 10px 0px;margin-bottom: 15px;border-bottom: 1px solid #ddd;
+}
