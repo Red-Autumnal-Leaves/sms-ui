@@ -1,13 +1,13 @@
 /* 会员管理 - 会员信息 */
-.table img{
+.table-cont img{
     width: 20px;
     height: 20px;
 }
-.table a{
+.table-cont  a{
     color: #00b3ee;
 }
 .table-cont {
-    max-height: 245px;
+    max-height: 1000px;
     overflow: auto;
     margin: 20px 10px;
 }

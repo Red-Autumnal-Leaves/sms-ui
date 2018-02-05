@@ -165,7 +165,7 @@ angular.module('sales', []).config(function($stateProvider) {
 });
 
 /**
- * 销售管理
+ * 会员
  */
 angular.module('member', []).config(function($stateProvider) {
     $stateProvider
@@ -337,15 +337,24 @@ var _JS_REQUIRES = [
         ]
     }
 
-
 ];
 
-var GLOBALE_VERSION =  new Date().getTime();
-for(var i=0;i<_JS_REQUIRES.length;i++){
-    for(var j=0;j<_JS_REQUIRES[i].files.length;j++){
-        _JS_REQUIRES[i].files[j] += "?v=" + GLOBALE_VERSION;
+
+
+
+// 对JS 进行初始化处理
+function initJsRequires(){
+    var timestamp =  new Date().getTime();
+    for(var i = 0; i < _JS_REQUIRES.length ; i++){
+        for(var j = 0 ; j < _JS_REQUIRES[i].files.length; j ++){
+            _JS_REQUIRES[i].files[j] += "?v=" + timestamp;
+        }
     }
 }
+initJsRequires();
+
+
+
 app.constant('JS_REQUIRES',_JS_REQUIRES);
 
 

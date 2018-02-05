@@ -19,25 +19,33 @@
             会员类型信息
         </div>
         <!-- 内容-->
-        <div class="table-responsive">
-            <table id="table-ext-1" class="table table-bordered table-hover">
+        <div class="table-responsive table-cont" scroll-table fix="20">
+            <table  class="table table-bordered table-hover">
                 <thead>
                     <tr>
                         <th>编号</th>
                         <th>名称</th>
+                        <th>是否折扣</th>
                         <th>描述</th>
                         <th>创建时间</th>
+                        <th>创建人</th>
+                        <th>最后修改人</th>
+                        <th>最后修改时间</th>
                         <th>操作</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat="item in tableData">
-                        <td>{{item.typeId}}</td>
+                        <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
+                        <td>{{item.isDiscount ? item.discount : '否'}}</td>
                         <td>{{item.desc}}</td>
+                        <td>{{item.createUser}}</td>
                         <td>{{item.createTime}}</td>
+                        <td>{{item.lastUpdateUser}}</td>
+                        <td>{{item.lastUpdateTime}}</td>
                         <td>
-                            <a ng-click="showEditModal(item.typeId,'md')" title="编辑"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
+                            <a ng-click="showEditModal(item.id,'md')" title="编辑"><i class="fa fa-fw m-r-xs text-info fa-pencil"></i></a>
                         </td>
                     </tr>
                 </tbody>

@@ -223,6 +223,13 @@ angular.module('app.directives', ['ui.load'])
         };
     }])
     .directive('checkAll', checkAll)
+    .directive('scrollTable', function () {
+        return{
+            restrict: 'A',
+            replace: false,
+            link:function(scope, element, attrs){ initScorllTable(scope, element, attrs);}
+        }
+    })
     .directive('tablePagination', function () {
         return{
             restrict: 'E',
@@ -249,7 +256,7 @@ angular.module('app.directives', ['ui.load'])
          }
     });
 ;
-
+//全选
 function checkAll () {
     var directive = {
         link: link,
@@ -279,7 +286,14 @@ function checkAll () {
     }
 }
 
-function getTablePaginationHtml() {
-
-    return '<ul class="pagination pagination-sm"><li><a >«</a><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li><a href="#">...</a></li><li><a href="#">10</a></li><li><a href="#">11</a></li><li><a href="#">12</a></li><li><a>»</a></li></ul><select class="input-sm form-control w-sm inline v-middle pagination-ps-select"><option value="0">10</option><option value="1">20</option><option value="2">30</option><option value="3">50</option></select>';
+//初始化带滚动条的table
+function initScorllTable(scope, element, attrs){
+    var height = $(document).height();
+    var fix = attrs.fix || 30;
+    $(element).css('height',  height * fix / 100);
+    $(element).on('scroll',function(e){
+        var scrollTop = this.scrollTop;
+        var thread = $(element).find('thead');
+        $(thread).css('transform','translateY(' + scrollTop + 'px)');
+    });
 }

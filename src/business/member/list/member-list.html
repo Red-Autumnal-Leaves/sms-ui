@@ -13,8 +13,8 @@
             会员列表
         </div>
         <!-- 内容-->
-        <div class="table-responsive table-cont" id="table-cont">
-            <table id="table-ext-1" class="table table-bordered table-hover">
+        <div class="table-responsive table-cont" scroll-table fix="20">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr class="fixedHead">
                         <th>用户名</th>
@@ -56,13 +56,3 @@
         </div>
     </div>
 </div>
-<script>
-    window.onload = function () {
-        var tableCont = document.querySelector('#table-cont')
-        function scrollHandle(e) {
-            var scrollTop = this.scrollTop;
-            this.querySelector('thead').style.transform = 'translateY(' + scrollTop + 'px)';
-        }
-        tableCont.addEventListener('scroll', scrollHandle)
-    }
-</script>
