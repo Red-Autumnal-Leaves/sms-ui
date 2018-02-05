@@ -11,9 +11,7 @@ var app = angular.module('app', [
         'ui.bootstrap',
         'ui.load',
         'ui.jq',
-        'ui.validate',
         'pascalprecht.translate',
-        'angularBootstrapNavTree',
         'app.filters',
         'app.directives',
         'toaster',
@@ -26,9 +24,7 @@ var app = angular.module('app', [
         'item',
         'stock',
         'member',
-        'basics',
-        'table',
-        'tree'
+        'basics'
 ]);
 //初始化
 app.run([ '$rootScope', '$state', '$stateParams',function ($rootScope,   $state,   $stateParams) {
@@ -149,18 +145,15 @@ app.controller('AppCtrl', ['$rootScope','$scope', '$translate', '$localStorage',
  */
 app.config(['$translateProvider', function($translateProvider){
 
-    // Register a loader for the static files
-    // So, the module will search missing translation tables under the specified urls.
-    // Those urls are [prefix][langKey][suffix].
     $translateProvider.useStaticFilesLoader({
         prefix: 'assets/i18n/',
         suffix: '.json'
     });
 
-    // Tell the module what language to use by default
+    // default
     $translateProvider.preferredLanguage('ch_zn');
 
-    // Tell the module to store the language in the local storage
+    //
     $translateProvider.useLocalStorage();
 
 }]);
@@ -198,53 +191,6 @@ app.config(['$httpProvider',function($httpProvider){
  * value: jquery插件js,css
  */
 app.constant('JQ_CONFIG', {
-        easyPieChart:   ['assets/js/jquery/charts/easypiechart/jquery.easy-pie-chart.js'],
-        plot:           [
-                            'assets/js/jquery/charts/flot/jquery.flot.min.js',
-                            'assets/js/jquery/charts/flot/jquery.flot.resize.js',
-                            'assets/js/jquery/charts/flot/jquery.flot.tooltip.min.js',
-                            'assets/js/jquery/charts/flot/jquery.flot.spline.js',
-                            'assets/js/jquery/charts/flot/jquery.flot.orderBars.js',
-                            'assets/js/jquery/charts/flot/jquery.flot.pie.min.js'
-                        ],
-        slimScroll:     ['assets/js/jquery/slimscroll/jquery.slimscroll.min.js'],
-        sortable:       ['assets/js/jquery/sortable/jquery.sortable.js'],
-        nestable:       [
-                            'assets/js/jquery/nestable/jquery.nestable.js',
-                            'assets/js/jquery/nestable/nestable.css'
-                        ],
-        filestyle:      ['assets/js/jquery/file/bootstrap-filestyle.min.js'],
-        slider:         [
-                            'assets/js/jquery/slider/bootstrap-slider.js',
-                            'assets/js/jquery/slider/slider.css'
-                        ],
-        chosen:         [
-                            'assets/js/jquery/chosen/chosen.jquery.min.js',
-                            'assets/js/jquery/chosen/chosen.css'
-                        ],
-        TouchSpin:      [
-                            'assets/js/jquery/spinner/jquery.bootstrap-touchspin.min.js',
-                            'assets/js/jquery/spinner/jquery.bootstrap-touchspin.css'
-                        ],
-        wysiwyg:        [
-                            'assets/js/jquery/wysiwyg/bootstrap-wysiwyg.js',
-                            'js/jquery/wysiwyg/jquery.hotkeys.js'
-                        ],
-        dataTable:      [
-                            'assets/js/jquery/datatables/jquery.dataTables.min.js',
-                            'assets/js/jquery/datatables/dataTables.bootstrap.js',
-                            'assets/js/jquery/datatables/dataTables.bootstrap.css'
-                        ],
-        vectorMap:      [
-                            'assets/js/jquery/jvectormap/jquery-jvectormap.min.js',
-                            'assets/js/jquery/jvectormap/jquery-jvectormap-world-mill-en.js',
-                            'assets/js/jquery/jvectormap/jquery-jvectormap-us-aea-en.js',
-                            'assets/js/jquery/jvectormap/jquery-jvectormap.css'
-                        ],
-        footable:       [
-                            'assets/js/jquery/footable/footable.all.min.js',
-                            'assets/js/jquery/footable/footable.core.css'
-                        ]
 
 
 })
