@@ -113,7 +113,7 @@ gulp.task('copy',['lib','img','i18n']);
 
 gulp.task('start', function(){
     return gulp.src(['src']).pipe(webserver({
-            port: 3888,
+            port: 3988,
             livereload: true,
             open: true,
             proxies: [
