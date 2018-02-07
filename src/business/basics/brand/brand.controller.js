@@ -18,8 +18,8 @@ angular.module("basics").controller("basicsBrandCtrl", ['$scope','$timeout','$mo
         $scope.clearQuery = function(){
             $scope.query.keyword = null;
         }
-
-
+  
+ 
         /**
          * 查询
          */
