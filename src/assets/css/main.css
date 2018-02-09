@@ -1,6 +1,11 @@
 .plt-body{
     padding: 20px;
 }
+@media only screen and (min-width: 768px){
+    .navbar-header .navbar-brand {
+        width: 100%;
+    }
+}
 /* 会员管理 - 会员信息 */
 .table-cont img{
     width: 20px;
